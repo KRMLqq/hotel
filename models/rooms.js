@@ -2,7 +2,7 @@ const roomsAction = {
     getAllRooms(con, callback) {
         con.query("SELECT * FROM rooms", callback);
     }
-
+    
 
 }
 
