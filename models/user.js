@@ -18,7 +18,7 @@ class User {
 
 const UserActions = {
     getUser(con, mail, password, callback) {
-        con.query(`SELECT * FROM users WHERE user_password='${password}' AND user_email='${mail} '`, callback)
+        con.query(`SELECT * FROM users WHERE user_email='${mail}' AND user_password='${password}'`, callback)
     },
 
     isUserExist(con, mail, callback) {
@@ -27,7 +27,7 @@ const UserActions = {
 
     insertUser(con, User, callback) {
                 console.log(User);
-                con.query(`INSERT INTO users (user_id, user_firstname, user_lastname, user_email, user_password, user_phonenumber) VALUES('${User.firstName}', '${User.lastName}', '${User.email}', '${User.password}', ${User.phoneNumber})`, callback)
+                con.query(`INSERT INTO users (user_id, user_firstname, user_lastname, user_email, user_password, user_phonenumber) VALUES('','${User.firstName}', '${User.lastName}', '${User.email}', '${User.password}', ${User.phoneNumber})`, callback)
         }
     
 }
