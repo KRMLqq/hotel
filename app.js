@@ -1,8 +1,19 @@
 const express = require('express');
 const bodyParser = require('body-parser');
-const con = require('./config/database')
+const con = require('./config/database');
+const cors = require('cors');
+const cookieParser = require('cookie-parser');
+
+
 
 const app = express();
+
+app.use(cookieParser());
+
+app.use(cors({
+    origin: '*',
+    methods: ['GET', 'POST', 'DELETE', 'UPDATE', 'PUT', 'PATCH']
+}));
 
 app.use(bodyParser.urlencoded({ extended: false }))
 
