@@ -29,7 +29,7 @@ app.use(function(req, res, next) {
 })
 
 app.use('/', require('./routes/user'))
-
+app.use('/', require('./routes/rooms'))
 
 app.listen(8000, () => {
     console.log("Server start");
