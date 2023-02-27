@@ -1,0 +1,105 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato&display=swap');
+html {
+    font-family: 'Lato', sans-serif;
+}
+
+body {
+    background-color: rgb(31, 31, 31);
+    color: whitesmoke;
+}
+
+.myCarousel {
+    height: 50vh;
+    margin-top: 10px;
+    margin-bottom: 10;
+}
+
+.logoDiv {
+    padding-top: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 10px;
+}
+
+.block {
+    text-align: center;
+}
+
+.block * {
+    padding: 15px;
+}
+
+.photoBlock {
+    width: 90%;
+    height: 300px;
+    margin: auto;
+    background-size: cover;
+}
+
+.photoBlock-1 {
+    background-image: url("https://warszawa.intercontinental.com/wp-content/uploads/2019/06/Basenwarszawa-600x550.jpg");
+}
+
+.photoBlock-2 {
+    background-image: url("https://warszawa.intercontinental.com/wp-content/uploads/2017/08/Lobby_InterContinental-Warsaw-16-600x550.jpg");
+}
+
+.largeNav {
+    background-color: rgb(31, 31, 31) !important;
+}
+
+hr {
+    margin: 10px;
+    height: 2px;
+    background-color: gold;
+}
+
+.mobileFooter {
+    text-align: center;
+    border-top: 1px solid goldenrod;
+    padding: 10px;
+}
+
+.mobileNav {
+    background-color: rgb(31, 31, 31);
+}
+
+@media only screen and (max-width: 600px) {
+    .largeNav {
+        display: none;
+    }
+    .mobileNav {
+        display: flex;
+    }
+    hr:first-child {
+        margin-top: 0;
+    }
+}
+
+li {
+    padding: 10px;
+}
+
+.fade-on-scroll {
+    display: none;
+}
+
+
+/* Small devices (portrait tablets and large phones, 600px and up) */
+
+@media only screen and (min-width: 600px) {
+    .mobileNav {
+        display: none;
+    }
+}
+
+
+/* Large devices (laptops/desktops, 992px and up) */
+
+@media only screen and (min-width: 992px) {}
+
+
+/* Extra large devices (large laptops and desktops, 1200px and up) */
+
+@media only screen and (min-width: 1200px) {}
