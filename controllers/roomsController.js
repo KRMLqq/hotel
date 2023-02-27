@@ -1,7 +1,7 @@
-const { roomsActions, } = require('../models/rooms');
+const roomsActions = require('../models/rooms');
 
 const roomsControls = {
-    getRooms(req, res) {
+    getAllRooms(req, res) {
         roomsActions.getAllRooms(req.con, (err, result) => {
             if (err) throw err;
             res.json(result);

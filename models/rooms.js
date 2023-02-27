@@ -15,7 +15,7 @@ class Room {
 
 const roomsAction = {
     getAllRooms(con, callback) {
-        con.query("SELECT * FROM rooms", callback);
+        con.query("SELECT * FROM rooms", callback)
     },
 
     showRoomById(con, id, callback) {
@@ -23,4 +23,4 @@ const roomsAction = {
     }
 }
 
-module.exports = { roomsAction, Room };
+module.exports = roomsAction;
