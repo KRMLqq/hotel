@@ -1,12 +1,102 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 </head>
+
 <body>
-    
+    <div class="logoDiv">
+        <img src="https://warszawa.intercontinental.com/wp-content/themes/intercontinental/img/svg/logo.svg" alt="Nowoczesny hotel w sercu miasta – Hotel InterContinental Warszawa Centrum">
+    </div>
+    <form id="loginForm">
+        <input type="text" name="email">
+        <input type="password" name="password">
+        <input type="submit" value="Zaloguj się">
+    </form>
+
+    <br>
+
+    <form id="registerForm">
+        <input type="text" name="firstname">
+        <input type="text" name="lastname">
+        <input type="text" name="email">
+        <input type="password" name="password">
+        <input type="number" name="phonenumber">
+        <input type="submit" value="Zarejestruj się">
+    </form>
+
+    <script>
+        function prepareData(dataToCode) {
+            const dataPart = [];
+            for (let key in dataToCode) {
+                dataPart.push(encodeURIComponent(key) + "=" + encodeURIComponent(dataToCode[key]));
+            }
+            return dataPart.join("&").replace(/%20/g, "+");
+        }
+
+        document.querySelector('#loginForm').addEventListener('submit', event => {
+            event.preventDefault();
+
+            const mail = document.querySelector('#loginForm input[name=email]').value;
+            const passw = document.querySelector('#loginForm input[name=password]').value;
+
+            const data = {
+                email: mail,
+                password: passw
+            }
+
+            const dataToSend = prepareData(data);
+
+            console.log(data);
+            fetch("http://localhost:8000/user", {
+                method: 'POST',
+                headers: {
+                    'Content-Type': "application/x-www-form-urlencoded"
+                },
+                body: dataToSend
+            }).then(res => {
+                if (res.ok) {
+                    document.cookie = "logged=true";
+                    window.location.href = "./index.html";
+                }
+            });
+        })
+
+        document.querySelector('#registerForm').addEventListener('submit', event => {
+            event.preventDefault();
+
+            const fname = document.querySelector('#registerForm input[name=firstname]').value;
+            const lname = document.querySelector('#registerForm input[name=lastname]').value;
+            const mail = document.querySelector('#registerForm input[name=email]').value;
+            const passw = document.querySelector('#registerForm input[name=password]').value;
+            const phone = document.querySelector('#registerForm input[name=phonenumber]').value;
+
+            const data = {
+                firstName: fname,
+                lastName: lname,
+                email: mail,
+                password: passw,
+                phoneNumber: phone
+            }
+
+            const dataToSend = prepareData(data);
+            fetch("http://localhost:8000/addUser", {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': "application/x-www-form-urlencoded"
+                    },
+                    body: dataToSend
+                })
+                .then(res => {
+                    if (res.ok)
+                        alert("zarejestrowano");
+                })
+        })
+    </script>
 </body>
+
 </html>

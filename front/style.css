@@ -14,6 +14,17 @@ body {
     margin-bottom: 10;
 }
 
+.videodiv {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 50vh;
+}
+
+.video {
+    height: 300px;
+}
+
 .logoDiv {
     padding-top: 10px;
     display: flex;
