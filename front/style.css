@@ -20,6 +20,8 @@ body {
     align-items: center;
     justify-content: center;
     margin-bottom: 10px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid goldenrod;
 }
 
 .block {
@@ -52,7 +54,7 @@ body {
 hr {
     margin: 10px;
     height: 2px;
-    background-color: gold;
+    background-color: goldenrod;
 }
 
 .mobileFooter {
