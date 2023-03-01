@@ -11,8 +11,19 @@
         .photo:hover {
             opacity: 0.50;
         }
+        a {
+            color: whitesmoke !important;
+        }
+
+        .photoDiv {
+            margin: 10px;
+        }
+        .photo {
+           width: 100%;
+        }
     </style>
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="./css/menufonts.css">
 
 </head>
 
@@ -25,18 +36,24 @@
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
           </button>
-            <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+            <div class="collapse navbar-collapse justify-content-center" id="navbarNavAltMarkup">
                 <div class="navbar-nav">
                     <a class="nav-link" href="index.html">Strona główna</a>
                     <a class="nav-link" href="rooms.html">Pokoje</a>
                     <a class="nav-link" href="gallery.html">Galeria</a>
                     <a class="nav-link">Konto</a>
+        <div style="background-color: goldenrod;padding-left: 15px; padding-right: 15px;"><a class="flex-sm-fill text-sm-center nav-link" href="reservation.html">Rezerwuj online</a></div>
+
                 </div>
             </div>
         </div>
     </nav>
+    
 
-    <div class="photosDiv container flex-column"></div>
+
+    <div class="photosDiv container">
+       <div class="d-flex flex-column"></div>
+    </div>
 
     <footer class="mobileFooter">
         <div>
@@ -51,7 +68,7 @@
     </footer>
     <nav class="nav justify-content-between fixed-bottom nav-pills mobileNav dropup">
         <button type="button" class="btn dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false" style="color:whitesmoke;">
-            Menu
+            <i class="demo-icon icon-menu"></i>
           </button>
         <ul class="dropdown-menu dropdown-menu-dark w-100">
             <li><a>Konto</a></li>
@@ -59,7 +76,7 @@
             <li><a href="gallery.html">Galeria</a></li>
             <li><a href="index.html">Strona główna</a></li>
         </ul>
-        <a href="tel:+48223288888" class="flex-sm-fill text-sm-center nav-link">Zadzwoń</a>
+        <a href="tel:+48223288888" class="flex-sm-fill text-sm-center nav-link"><i class="demo-icon icon-phone"></i></a>
         <div style="background-color: goldenrod;padding-left: 15px; padding-right: 15px;"><a class="flex-sm-fill text-sm-center nav-link" href="#">Rezerwuj online</a></div>
 
     </nav>

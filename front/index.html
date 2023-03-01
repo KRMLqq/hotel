@@ -8,6 +8,7 @@
     <title>Document</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="./css/menufonts.css">
     <style>
         a {
             color: whitesmoke !important;
@@ -17,24 +18,25 @@
 
 <body>
     <div class="logoDiv">
-        <img src="https://warszawa.intercontinental.com/wp-content/themes/intercontinental/img/svg/logo.svg" alt="Nowoczesny hotel w sercu miasta – Hotel InterContinental Warszawa Centrum">
+        <a href="index.html"><img src="https://warszawa.intercontinental.com/wp-content/themes/intercontinental/img/svg/logo.svg" alt="Nowoczesny hotel w sercu miasta – Hotel InterContinental Warszawa Centrum"></a>
     </div>
     <nav class="navbar navbar-expand-lg sticky-top largeNav">
         <div class="container-fluid">
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
           </button>
-            <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+            <div class="collapse navbar-collapse justify-content-center" id="navbarNavAltMarkup">
                 <div class="navbar-nav">
                     <a class="nav-link" href="index.html">Strona główna</a>
                     <a class="nav-link" href="rooms.html">Pokoje</a>
                     <a class="nav-link" href="gallery.html">Galeria</a>
-                    <a class="nav-link">Konto</a>
+                    <a class="nav-link" href="login.html">Konto</a>
+                    <div style="background-color: goldenrod;padding-left: 15px; padding-right: 15px;"><a class="flex-sm-fill text-sm-center nav-link" href="reservation.html">Rezerwuj online</a></div>
                 </div>
             </div>
         </div>
     </nav>
-    <!--
+
     <div id="carouselExampleAutoplaying" class="carousel slide" data-bs-ride="carousel">
         <div class="carousel-inner myCarousel">
             <div class="carousel-item active">
@@ -48,18 +50,19 @@
             </div>
         </div>
     </div>
--->
+    <!--
     <div class="videoDiv">
-        <video class="video" loop="" autoplay="" preload="metadata" poster="">
+        <video class="video" loop="" autoplay="true" preload="metadata" poster="">
 		    	<source src="https://warszawa.intercontinental.com/wp-content/uploads/2022/08/intercontinental-slider-v1.mp4" type="video/mp4">
 		    </video>
     </div>
-
+-->
 
     <div class="container">
-        <hr>
+      <div class="row">
+        <hr class="mt-2">
 
-        <div class="block">
+        <div class="block mt-2">
             <h2>Pięciogwiazdkowy hotel w centrum Warszawy</h2>
             <h4>Hotel InterContinental Warszawa zaprasza do 414 przestronnych i doskonale wyposażonych pokoi i apartamentów, z których rozciąga się wspaniały widok na panoramę Warszawy.</h4>
             <p>
@@ -71,21 +74,21 @@
             </p>
         </div>
 
-        <hr>
+        <hr class="mt-2">
 
-        <div class="block fade-on-scroll">
+        <div class="block fade-on-scroll col-lg-6 mt-2">
             <h2>Najlepszy hotel w centrum Warszawy podczas podróży biznesowej oraz prywatnego przyjazdu</h2>
             <p>Hotel InterContinental jest położony w samym centrum Warszawy, zaledwie 9,5 km od lotniska Chopina, w bezpośrednim sąsiedztwie Centralnego Dworca Kolejowego, Pałacu Kultury i Nauki oraz Centrum Handlowego Złote Tarasy. Idealna lokalizacja
                 hotelu sprawia, że Hotel InterContinental Warszawa jest doskonałym wyborem dla osób przebywających w Warszawie w interesach oraz dla osób prywatnych, które poszukują dobrze zlokalizowanego hotelu w Warszawie. Niezależnie od celu wizyty,
                 do dyspozycji naszych gości pozostaje zespół concierge. Jest to jeden z najwyższych budynków w mieście o unikalnej i nowoczesnej architekturze, będący jednym z najważniejszych punktów stolicy.</p>
         </div>
 
-        <div class="photoBlock photoBlock-1 fade-on-scroll"></div>
+        <div class="photoBlock photoBlock-1 fade-on-scroll col-lg-6 mt-2"></div>
 
-        <hr>
+        <hr class="mt-2">
+     
 
-
-        <div class="block fade-on-scroll">
+        <div class="block block2 fade-on-scroll col-lg-6 mt-2">
             <h2>Usługi hotelowe</h2>
             <p>Kilkakrotnie wyróżniona przez przewodnik Michelin oraz wielokrotnie nagradzana restauracja Platter by Karol Okrasa, spełnia oczekiwania nawet najwytrawniejszych smakoszy. Szeroki wybór win specjalnie wyselekcjonowanych przez sommeliera, zadowoli
                 najbardziej wymagających wielbicieli tego trunku. Śniadanie w Restauracji Downtown z widokiem na Pałac Kultury i Nauki czy też rozkoszuj się najlepszymi gatunkami herbat, kawą parzoną z jednych z trzech dostępnych ziaren lub delektując
@@ -94,11 +97,12 @@
             </p>
         </div>
 
-        <div class="photoBlock photoBlock-2 fade-on-scroll"></div>
+        <div class="photoBlock photoBlock-2 fade-on-scroll mt-2 col-lg-6 order-first-lg"></div>
+       
 
-        <hr>
+        <hr class="mt-2">
 
-        <div class="block fade-on-scroll">
+        <div class="block fade-on-scroll mt-2">
             <h2>Hotel Warszawa</h2>
             <p>Hotel Intercontinental Warszawa to wyjątkowy, pięciogwiazdkowy obiekt zlokalizowany w samym centrum stolicy. W najbliższym sąsiedztwie znajduje się Dworzec Centralny, Pałac Kultury i Nauki oraz stacja warszawskiego metra. Natomiast lotnisko
                 Chopin znajduje się w odległości około 9 kilometrów. Lokalizacja naszego hotelu jest również atrakcyjna dla osób odwiedzających Warszawę w celach turystycznych. Tylko kilkaset metrów dzieli nasz hotel od taki miejsc jak Muzeum Powstania
@@ -107,9 +111,9 @@
                 Standardem są u nas m.in. klimatyzacja, WiFi, mini bar na żądanie, zestaw do przygotowania kawy i herbaty, sejf, suszarka do włosów, zestaw do prasowania czy zestaw do czyszczenia obuwia.</p>
         </div>
 
-        <hr>
+        <hr class="mt-2">
 
-        <div class="block fade-on-scroll">
+        <div class="block fade-on-scroll mt-2">
             <h2>Najlepsze restauracje w Warszawie</h2>
             <p>W hotelu InterContinental znajdują się dwie restauracje oraz bar. Różnorodna oferta gastronomiczna z pewnością spełni oczekiwania naszych gości.</p>
             <h4>Platter by Karol Okrasa</h4>
@@ -121,15 +125,20 @@
                 Wyjątkowa wnętrza oraz lokalizacja z widokiem na centrum miasta oraz Pałac Kultury i Nauki sprawia, że warszawska restauracja DownTown to miejsce wyjątkowe, które oprócz uczty kulinarnej, zapewni poczucie komfortu i luksusu.</p>
         </div>
 
-        <hr>
+        <hr class="mt-2">
 
-        <div class="block fade-on-scroll">
+        <div class="block fade-on-scroll mt-2">
             <h2>SPA Warszawa</h2>
             <p>Prawdopodobnie najlepiej zlokalizowane SPA w Warszawie. Kameralna atmosfera salonu Spa For You, mieszczącego się na 43 piętrze Hotelu Intercontinental Warszawa oraz bogaty wachlarz zabiegów i masaży, pozwala uzyskać efekt głębokiego wyciszenia,
                 a także zachować równowagę ciała i ducha.</p>
             <p>Nasze warszawskie SPA to idealne miejsce, aby zadbać o swój piękny wygląd i dobre samopoczucie. Specjalizujemy się w zabiegach wellness, które nie tylko relaksują ale też poprawiają kondycję skóry twarzy i ciała. Profesjonalny i pełen pasji
                 personel świadczy usługi na najwyższym poziomie dobierając indywidualne rozwiązania.</p>
             <p>Dla naszych Klientów przygotowaliśmy również ofertę voucherów podarunkowych do SPA, które będą idealnym pomysłem na prezent dla najbliższych Tobie osób.</p>
+        </div>
+
+        <hr class="mt-2">
+
+        <div class="block fade-on-scroll mt-2">    
             <h6>Podsumowując</h6>
             <p>Hotel InterContinental Warszawa to pięciogwiazdkowy hotel, który znajduje się w sercu miasta Warszawa, zaledwie kilka kroków od Starego Miasta. Ten prestiżowy hotel oferuje swoim gościom szeroki zakres udogodnień i wysoki standard obsługi,
                 co sprawia, że jest idealnym wyborem dla turystów oraz osób podróżujących w celach biznesowych.</p>
@@ -137,6 +146,7 @@
             <p>Hotel oferuje szeroki zakres udogodnień, w tym restauracje, bary, centrum fitness, basen, spa oraz centrum biznesowe, co sprawia, że spełni oczekiwania najbardziej wymagających gości. Bez wątpienia, InterContinental Warszawa to jeden z najlepszych
                 hoteli w Warszawie, który zapewni wygodny i luksusowy pobyt w stolicy Polski.</p>
         </div>
+    </div>
     </div>
     <footer class="mobileFooter">
         <div>
@@ -151,15 +161,15 @@
     </footer>
     <nav class="nav justify-content-between fixed-bottom nav-pills mobileNav dropup">
         <button type="button" class="btn dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false" style="color:whitesmoke;">
-            Menu
+            <i class="demo-icon icon-menu"></i>
           </button>
         <ul class="dropdown-menu dropdown-menu-dark w-100">
-            <li><a>Konto</a></li>
+            <li><a href="login.html">Konto</a></li>
             <li><a href="rooms.html">Pokoje</a></li>
             <li><a href="gallery.html">Galeria</a></li>
             <li><a href="index.html">Strona główna</a></li>
         </ul>
-        <a href="tel:+48223288888" class="flex-sm-fill text-sm-center nav-link">Zadzwoń</a>
+        <a href="tel:+48223288888" class="flex-sm-fill text-sm-center nav-link"><i class="demo-icon icon-phone"></i></a>
         <div style="background-color: goldenrod;padding-left: 15px; padding-right: 15px;"><a class="flex-sm-fill text-sm-center nav-link" href="#">Rezerwuj online</a></div>
 
     </nav>
@@ -168,20 +178,20 @@
     <script src="https://code.jquery.com/jquery-3.6.3.min.js" integrity="sha256-pvPw+upLPUjgMXY0G+8O0xUf+/Im1MZjXxxgOcBQBXU=" crossorigin="anonymous"></script>
     <script>
         console.log(document.cookie.length);
-        $(function() {
+    //  //   $(function() {
 
-            $(window).scroll(function() {
-                var topOfWindow = $(window).scrollTop();
-                var bottomOfWindow = topOfWindow + $(window).height();
-                $('.fade-on-scroll').each(function() {
-                    var topOfElement = $(this).offset().top;
-                    var bottomOfElement = topOfElement + $(this).outerHeight();
-                    if ((bottomOfElement >= topOfWindow) && (topOfElement <= bottomOfWindow) && !$(this).hasClass('animated') && (bottomOfElement <= bottomOfWindow)) {
-                        $(this).addClass('animated').fadeIn(3000);
-                    }
-                });
-            });
-        });
+    //         $(window).scroll(function() {
+    //             var topOfWindow = $(window).scrollTop();
+    //             var bottomOfWindow = topOfWindow + $(window).height();
+    //             $('.fade-on-scroll').each(function() {
+    //                 var topOfElement = $(this).offset().top;
+    //                 var bottomOfElement = topOfElement + $(this).outerHeight();
+    //                 if ((bottomOfElement >= topOfWindow) && (topOfElement <= bottomOfWindow) && !$(this).hasClass('animated') && (bottomOfElement <= bottomOfWindow)) {
+    //                     $(this).addClass('animated').fadeIn(3000);
+    //                 }
+    //             });
+    //         });
+    //     });
     </script>
 </body>
 

@@ -44,8 +44,8 @@ body {
 }
 
 .photoBlock {
-    width: 90%;
-    height: 300px;
+
+    height: 400px;
     margin: auto;
     background-size: cover;
 }
@@ -56,6 +56,15 @@ body {
 
 .photoBlock-2 {
     background-image: url("https://warszawa.intercontinental.com/wp-content/uploads/2017/08/Lobby_InterContinental-Warsaw-16-600x550.jpg");
+}
+
+.rooms-banner {
+    background-image: url("roomImages/rooms.jpg");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    max-width: 100vw;
+    height: 50vh;
 }
 
 .largeNav {
@@ -78,6 +87,19 @@ hr {
     background-color: rgb(31, 31, 31);
 }
 
+.roomDiv {
+    box-sizing: border-box;
+}
+
+.roomPhoto {width: 100%;}
+
+
+.roomDiv * {
+    padding: 5px;
+}
+
+
+
 @media only screen and (max-width: 600px) {
     .largeNav {
         display: none;
@@ -93,10 +115,10 @@ hr {
 li {
     padding: 10px;
 }
-
+/*
 .fade-on-scroll {
     display: none;
-}
+}*/
 
 
 /* Small devices (portrait tablets and large phones, 600px and up) */
@@ -110,7 +132,25 @@ li {
 
 /* Large devices (laptops/desktops, 992px and up) */
 
-@media only screen and (min-width: 992px) {}
+@media only screen and (min-width: 992px) {
+    .roomDiv {
+        display: flex;
+        flex-direction: row;
+    }
+    .roomPhoto {
+        width: 50%;
+    }
+    .loginContainer {
+        flex-direction: row !important;
+        justify-content: center;
+        width: 100% !important;
+    }
+
+    .loginContainer:last-child,
+    .loginContainer:first-child {
+        width: 50%;
+    }
+}
 
 
 /* Extra large devices (large laptops and desktops, 1200px and up) */
