@@ -1,0 +1,103 @@
+/* Datepicker container */
+
+.ui-datepicker {
+    background-color: #2f2f2f;
+    /* Dark grey background */
+    color: #fff;
+    /* White text */
+    border: none;
+    /* Remove border */
+    font-family: Arial, sans-serif;
+    /* Font */
+}
+
+
+/* Hover state for datepicker days */
+
+.ui-datepicker td:hover a {
+    background-color: goldenrod;
+    /* Goldenrod background */
+    color: #fff;
+    /* White text */
+}
+
+
+/* Selected state for datepicker days */
+
+.ui-datepicker td.ui-state-active a {
+    background-color: goldenrod;
+    /* Goldenrod background */
+    color: #fff;
+    /* White text */
+}
+
+
+/* Datepicker header */
+
+.ui-datepicker-header {
+    background-color: #222;
+    /* Dark header background */
+    color: #fff;
+    /* White text */
+    border: none;
+    /* Remove border */
+}
+
+
+/* Previous and next buttons in datepicker header */
+
+.ui-datepicker-prev,
+.ui-datepicker-next {
+    background-color: #222;
+    /* Dark background */
+    color: #fff;
+    /* White text */
+    border: none;
+    /* Remove border */
+}
+
+
+/* Hover state for previous and next buttons */
+
+.ui-datepicker-prev:hover,
+.ui-datepicker-next:hover {
+    background-color: #444;
+    /* Darker background */
+}
+
+
+/* Datepicker title */
+
+.ui-datepicker-title {
+    font-weight: bold;
+}
+
+
+/* Datepicker day of week names */
+
+.ui-datepicker-calendar th {
+    background-color: #222;
+    /* Dark background */
+    color: #fff;
+    /* White text */
+}
+
+
+/* All dates in datepicker */
+
+.ui-datepicker-calendar td a {
+    background-color: #2f2f2f;
+    /* Dark grey background */
+    color: #fff;
+    /* White text */
+}
+
+
+/* Today's date in datepicker */
+
+.ui-datepicker-current-day {
+    background-color: goldenrod;
+    /* Goldenrod background */
+    color: #fff;
+    /* White text */
+}
