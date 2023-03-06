@@ -66,15 +66,17 @@
 
     </div>
 
+    <div class="reservationDiv mt-5">
+        <form>
+            <label>Data przyjazdu:</label><input type="text" name="start-date" id="start-date" class="dateSelect">
+            <label>Data odjazdu:</label><input type="text" name="end-date" id="end-date" class="dateSelect">
+            <label>Ilość osób:</label><input type="number" name="persons" min="1" max="4">
+            <input type="submit" style="background-color: goldenrod;padding-left: 15px; padding-right: 15px;" class="submitDate" value="Pokaż dostępne">
+        </form>
+    </div>
+
     <div class="container">
-        <div class="reservationDiv mt-5">
-            <form>
-                <input type="text" name="start-date" id="start-date" class="dateSelect">
-                <input type="text" name="end-date" id="end-date" class="dateSelect">
-                <input type="number" name="persons" min="1" max="4">
-                <input type="submit" style="background-color: goldenrod;padding-left: 15px; padding-right: 15px;" value="Pokaż dostępne">
-            </form>
-        </div>
+        
     </div>
 
     <footer class="mobileFooter">
@@ -108,13 +110,23 @@
     <script>
         let rooms;
         $(function() {
+            
+            function prepareData(dataToCode) {
+            const dataPart = [];
+            for (let key in dataToCode) {
+                dataPart.push(encodeURIComponent(key) + "=" + encodeURIComponent(dataToCode[key]));
+            }
+            return dataPart.join("&").replace(/%20/g, "+");
+            }
             $("#start-date").datepicker({
+                dateFormat: "yy-mm-dd",
                 onSelect: function(date) {
                     // Ustawienie maxDate dla pierwszego datepickera
                     $("#end-date").datepicker("option", "minDate", date);
                 }
             });
             $("#end-date").datepicker({
+                dateFormat: "yy-mm-dd",
                 onSelect: function(date) {
                     // Ustawienie maxDate dla pierwszego datepickera
                     $("#start-date").datepicker("option", "maxDate", date);
@@ -151,8 +163,68 @@
                 })
             })
 
+            document.querySelector('form').addEventListener('submit', event => {
+            event.preventDefault();
+            $('.container').empty();
 
+            const startdate = document.querySelector("input[name=start-date]").value;
+            const enddate = document.querySelector("input[name=end-date]").value;
+            const personscount = document.querySelector("input[name=persons]").value;
+
+
+            const data = {
+                startDate: startdate,
+                endDate: enddate,
+                personsCount: personscount
+            }
+
+            const dataToSend = prepareData(data);
+
+            console.log(data);
+            fetch("http://localhost:8000/getFreeRooms", {
+                method: 'POST',
+                headers: {
+                    'Content-Type': "application/x-www-form-urlencoded"
+                },
+                body: dataToSend
+            }).then(res => {
+                console.log(res);
+            }).then(data => {
+                console.log(data);
+                rooms = data;
+                $(rooms).each((i, e) => {
+                    let $div = $("<div>", {
+                        "class": "roomDiv mt-5 col",
+                        "id": "room" + (i + 1)
+                    });
+                    let $textDiv = $("<div>", {
+                        "class": "textDiv"
+                    });
+                    let $name = $("<h2>", {
+                        "class": "roomName"
+                    });
+                    let $description = $("<p>", {
+                        "class": "roomDescription"
+                    });
+                    $name.text(e.room_name);
+                    $description.text(e.room_description);
+                    let $photo = $("<img>", {
+                        "class": "roomPhoto",
+                        "src": "roomImages/zdj" + (i + 1) + ".jpg"
+                    });
+                    $div.append($photo);
+                    $textDiv.append($name);
+                    $textDiv.append($description);
+                    $div.append($textDiv);
+                    $('.container').append($div);
+                })
+            })
         })
+        })
+
+        
+
+       
     </script>
 
 </body>

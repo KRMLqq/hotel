@@ -6,6 +6,6 @@ const reservationsActions = {
     addReservation(con, user_id, room_id, callback) {
         con.query()
     },
-
+    
 
 }

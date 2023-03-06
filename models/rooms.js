@@ -20,6 +20,10 @@ const roomsAction = {
 
     showRoomById(con, id, callback) {
         con.query(`SELECT * FROM rooms WHERE room_id='${id}'`, callback)
+    },
+
+    showFreeRoom(con, start, end, persons, callback) {
+        con.query(`SELECT r.* FROM rooms r WHERE r.room_id NOT IN (SELECT rs.room_id FROM reservations rs WHERE rs.start_date = '${start}' OR rs.end_date = '${end}') AND r.room_persons >=${persons};`, callback)
     }
 }
 
