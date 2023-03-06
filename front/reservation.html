@@ -109,6 +109,8 @@
     <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js" integrity="sha256-xLD7nhI62fcsEZK2/v8LsBcb4lG7dgULkuXoXB/j91c=" crossorigin="anonymous"></script>
     <script>
         let rooms;
+        let start;
+        let end;
         $(function() {
             
             function prepareData(dataToCode) {
@@ -163,39 +165,37 @@
                 })
             })
 
-            document.querySelector('form').addEventListener('submit', event => {
-            event.preventDefault();
-            $('.container').empty();
+            $('form').submit(event => {
+                event.preventDefault();
+                $('.container').empty();
 
-            const startdate = document.querySelector("input[name=start-date]").value;
-            const enddate = document.querySelector("input[name=end-date]").value;
-            const personscount = document.querySelector("input[name=persons]").value;
+            const startdate = $("input[name=start-date]").val();
+            const enddate = $("input[name=end-date]").val();
+            const personscount = $("input[name=persons]").val();
 
 
-            const data = {
+            const Data = {
                 startDate: startdate,
                 endDate: enddate,
                 personsCount: personscount
             }
 
-            const dataToSend = prepareData(data);
+            const dataToSend = prepareData(Data);
 
-            console.log(data);
-            fetch("http://localhost:8000/getFreeRooms", {
-                method: 'POST',
-                headers: {
-                    'Content-Type': "application/x-www-form-urlencoded"
-                },
-                body: dataToSend
-            }).then(res => {
-                console.log(res);
-            }).then(data => {
-                console.log(data);
+            console.log(Data);
+
+            $.ajax({
+                url: "http://localhost:8000/getFreeRooms",
+                method: "post",
+                contentType: "application/x-www-form-urlencoded",
+                data: dataToSend,
+                success(data) {
+                    console.log(data);
                 rooms = data;
                 $(rooms).each((i, e) => {
                     let $div = $("<div>", {
                         "class": "roomDiv mt-5 col",
-                        "id": "room" + (i + 1)
+                        "id": e.room_id
                     });
                     let $textDiv = $("<div>", {
                         "class": "textDiv"
@@ -206,6 +206,9 @@
                     let $description = $("<p>", {
                         "class": "roomDescription"
                     });
+                    let $button = $("<button>Zarezerwuj</button>", {
+                        "class": "reservationButton",
+                    })
                     $name.text(e.room_name);
                     $description.text(e.room_description);
                     let $photo = $("<img>", {
@@ -215,9 +218,18 @@
                     $div.append($photo);
                     $textDiv.append($name);
                     $textDiv.append($description);
+                    $textDiv.append($button);
                     $div.append($textDiv);
                     $('.container').append($div);
                 })
+                }
+            }).done(res => {
+                start = startdate;
+                end = enddate;
+            })
+
+            $(".reservationButton").click(()=> {
+                
             })
         })
         })

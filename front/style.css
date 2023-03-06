@@ -8,8 +8,17 @@ body {
     color: whitesmoke;
 }
 
+h2 {
+    font-size: 2.5rem;
+}
+
 .myNavbar {
     width: 80% !important;
+}
+
+.reservationButton {
+    background-color: goldenrod;
+    
 }
 
 .nav-link:hover {
