@@ -18,7 +18,10 @@ h2 {
 
 .reservationButton {
     background-color: goldenrod;
-    
+}
+
+.nav-link {
+    transition: .5s;
 }
 
 .nav-link:hover {
@@ -139,6 +142,9 @@ hr {
     }
     hr:first-child {
         margin-top: 0;
+    }
+    .myCarousel {
+        height: auto;
     }
 }
 
