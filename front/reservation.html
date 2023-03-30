@@ -36,6 +36,29 @@
             color: whitesmoke !important;
             width: 30vw;
         }
+        
+        .modal-dark .modal-content {
+            background-color: rgb(28, 31, 31);
+            color: #fff;
+        }
+        
+        .modal-dark .modal-header {
+            background-color: rgb(41, 41, 41);
+            border-bottom: 1px solid #444;
+        }
+        
+        .modal-dark .modal-footer {
+            background-color: rgb(41, 41, 41);
+            border-top: 1px solid #444;
+        }
+        
+        .modal-dark .close {
+            color: #fff;
+        }
+        
+        .modal-dark .close:hover {
+            color: #ccc;
+        }
     </style>
 </head>
 
@@ -78,24 +101,34 @@
     <div class="container">
 
     </div>
-    <div class="modal fade" id="MyModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal modal-dark fade" id="MyModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
+                    <h1 class="modal-title fs-5" id="exampleModalLabel">Rezerwacja</h1>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
                     <form>
-                        <input type="text" name="imie">
-                        <input type="text" name="nazwisko">
-                        <input type="email" name="email">
-                        <input type="number" name="numer">
+                        <span>Imię:</span>
+                        <input type="text" name="imie"><br>
+                        <span>Nazwisko:</span>
+                        <input type="text" name="nazwisko"><br>
+                        <span>Email:</span>
+                        <input type="email" name="email"><br>
+                        <span>Numer Telefonu:</span>
+                        <input type="number" name="numer"><br>
                     </form>
+                    <p>Nazwa apartamentu: <span class="apartment"></span></p>
+                    <p>Data zameldowania: <span class="startDate"></span></p>
+                    <p>Data wymeldowania: <span class="endDate"></span></p>
+                    <p>Ilość dni: <span class="daysCount"></span></p>
+                    <p>Cena: <span class="price"></span></p>
+                    <p>Potwierdź rezerwacje przyciskiem poniżej</p>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-primary">Save changes</button>
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Anuluj</button>
+                    <button type="button" class="btn btn-primary">Potwierdź</button>
                 </div>
             </div>
         </div>
@@ -133,6 +166,7 @@
         let rooms;
         let start;
         let end;
+        let days;
         $(function() {
 
             $(document).on('click', '.reservationButton', function() {
@@ -193,23 +227,7 @@
 
             $('form').submit(event => {
                 event.preventDefault();
-                $('.container').empty().html(`<div class="modal fade" id="myModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-            <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
-                <div class="modal-content">
-                    <div class="modal-header">
-        <h5 class="modal-title">Modal title</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body">
-        <p>Modal body text goes here.</p>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save changes</button>
-      </div>
-                </div>
-            </div>
-        </div>`);
+                $('.container').empty();
 
 
 
@@ -250,14 +268,21 @@
                             let $description = $("<p>", {
                                 "class": "roomDescription"
                             });
+                            let $price = $("<p>", {
+                                "class": "roomPrice"
+                            });
                             let $button = $("<button>Zarezerwuj</button>", {
                                 "class": "reservationButton",
                             }).attr({
                                 'data-bs-toggle': 'modal',
-                                'data-bs-target': '#MyModal'
+                                'data-bs-target': '#MyModal',
+                                'data-id': e.room_id,
+                                'data-apartment': e.room_name,
+                                'data-price': e.room_price
                             });
                             $name.text(e.room_name);
                             $description.text(e.room_description);
+                            $price.text(e.room_price + " zł");
                             let $photo = $("<img>", {
                                 "class": "roomPhoto",
                                 "src": "roomImages/zdj" + (i + 1) + ".jpg"
@@ -265,6 +290,7 @@
                             $div.append($photo);
                             $textDiv.append($name);
                             $textDiv.append($description);
+                            $textDiv.append($price);
                             $textDiv.append($button);
                             $div.append($textDiv);
                             $('.container').append($div);
@@ -273,19 +299,29 @@
                 }).done(res => {
                     start = startdate;
                     end = enddate;
+                    let data1 = new Date(startdate);
+                    let data2 = new Date(enddate);
+                    let time = data2.getTime() - data1.getTime();
+                    days = time / (1000 * 3600 * 24);
                 })
+
+
 
                 $('.container').on('click', '.reservationButton', () => {
                     $('#myModal').modal('show');
                 });
 
                 $('#MyModal').on('show.bs.modal', function(event) {
-                    var button = $(event.relatedTarget);
-                    //var name = button.data('name');
-                    //var age = button.data('age');
-                    var modal = $(this);
-                    //modal.find('#name').text(name);
-                    //modal.find('#age').text(age);
+                    var button = $(event.relatedTarget)
+                    var apartment = button.data('apartment')
+                    var price = button.data('price');
+                    console.log(price);
+                    var modal = $(this)
+                    modal.find('.modal-body .apartment').text(apartment)
+                    modal.find('.modal-body .startDate').text(start)
+                    modal.find('.modal-body .endDate').text(end)
+                    modal.find('.modal-body .daysCount').text(days.toString())
+                    modal.find('.modal-body .price').text((price * days).toString())
                 })
 
 
