@@ -118,6 +118,8 @@
                         <input type="email" name="email"><br>
                         <span>Numer Telefonu:</span>
                         <input type="number" name="numer"><br>
+                        <span>Wybierz dodatkowe opcje:</span>
+                        <select name="services" id="services"></select>
                     </form>
                     <p>Nazwa apartamentu: <span class="apartment"></span></p>
                     <p>Data zameldowania: <span class="startDate"></span></p>
@@ -128,7 +130,7 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Anuluj</button>
-                    <button type="button" class="btn btn-primary">Potwierdź</button>
+                    <button type="button" class="btn btn-primary submitBtn">Potwierdź</button>
                 </div>
             </div>
         </div>
@@ -167,6 +169,8 @@
         let start;
         let end;
         let days;
+        let services;
+        const serviceSelect = document.querySelector('#services');
         $(function() {
 
             $(document).on('click', '.reservationButton', function() {
@@ -223,6 +227,11 @@
                     $div.append($textDiv);
                     $('.container').append($div);
                 })
+            })
+
+            $.getJSON("http://localhost:8000/getAllServices", res => {
+                console.log(res);
+                services = res;
             })
 
             $('form').submit(event => {
@@ -316,12 +325,15 @@
                     var apartment = button.data('apartment')
                     var price = button.data('price');
                     console.log(price);
-                    var modal = $(this)
-                    modal.find('.modal-body .apartment').text(apartment)
-                    modal.find('.modal-body .startDate').text(start)
-                    modal.find('.modal-body .endDate').text(end)
-                    modal.find('.modal-body .daysCount').text(days.toString())
-                    modal.find('.modal-body .price').text((price * days).toString())
+                    for (let i = 0; i < services.length; i++) {
+                        serviceSelect.innerHTML += `<option value=${services[i].service_id}>${services[i].service_name}</option>`;
+                    }
+                    var modal = $(this);
+                    modal.find('.modal-body .apartment').text(apartment);
+                    modal.find('.modal-body .startDate').text(start);
+                    modal.find('.modal-body .endDate').text(end);
+                    modal.find('.modal-body .daysCount').text(days.toString());
+                    modal.find('.modal-body .price').text((price * days).toString());
                 })
 
 
