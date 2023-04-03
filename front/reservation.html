@@ -170,7 +170,17 @@
         let end;
         let days;
         let services;
+        let roomID;
+
         const serviceSelect = document.querySelector('#services');
+
+        function prepareData(dataToCode) {
+            const dataPart = [];
+            for (let key in dataToCode) {
+                dataPart.push(encodeURIComponent(key) + "=" + encodeURIComponent(dataToCode[key]));
+            }
+            return dataPart.join("&").replace(/%20/g, "+");
+        }
         $(function() {
 
             $(document).on('click', '.reservationButton', function() {
@@ -317,6 +327,8 @@
 
 
                 $('.container').on('click', '.reservationButton', () => {
+                    roomID = this.data('id');
+
                     $('#myModal').modal('show');
                 });
 
@@ -324,6 +336,7 @@
                     var button = $(event.relatedTarget)
                     var apartment = button.data('apartment')
                     var price = button.data('price');
+                    //roomID = button.data('id');
                     console.log(price);
                     for (let i = 0; i < services.length; i++) {
                         serviceSelect.innerHTML += `<option value=${services[i].service_id}>${services[i].service_name}</option>`;
@@ -336,8 +349,57 @@
                     modal.find('.modal-body .price').text((price * days).toString());
                 })
 
+                document.querySelector('.submitBtn').addEventListener("click", () => {
+                    const fname = document.querySelector('input[name=imie]').value;
+                    const lname = document.querySelector('input[name=nazwisko]').value;
+                    const mail = document.querySelector('input[name=email]').value;
+                    const phone = document.querySelector('input[name=numer]').value;
+                    const selectedService = document.querySelector('#services').value;
+                    const data = {
+                        firstName: fname,
+                        lastName: lname,
+                        email: mail,
+                        password: null,
+                        phoneNumber: phone
+                    }
+
+                    const dataToSend = prepareData(data);
+                    fetch("http://localhost:8000/addUser", {
+                            method: 'POST',
+                            headers: {
+                                'Content-Type': "application/x-www-form-urlencoded"
+                            },
+                            body: dataToSend
+                        })
+                        .then(res => res.json())
+                        .then(data => {
+                            console.log(data);
+                            const data2 = {
+                                User_id: data["User_id"],
+                                Room_id: 2,
+                                Service_id: selectedService,
+                                Start: start,
+                                End: end
+                            }
+                            console.log(data2.User_id);
+                            const dataToSend2 = prepareData(data2);
+                            console.log(dataToSend2);
+                            fetch("http://localhost:8000/addReservation", {
+                                    method: 'POST',
+                                    headers: {
+                                        'Content-Type': "application/x-www-form-urlencoded"
+                                    },
+                                    body: dataToSend2
+                                })
+                                .then(res => {
+                                    if (res.ok)
+                                        alert("Dodano rezerwacje");
+                                })
+                        })
+                })
 
             })
+
         })
     </script>
 
