@@ -27,7 +27,6 @@ const userControls = {
     async addUser(req, res) {
         console.log(req.body);
         const user = new User(req.body);
-        let x;
         await UserActions.isUserExist(req.con, user.email, (err, result) => {
             if (err) throw err;
             if (result.length < 0)

@@ -16,10 +16,6 @@
             color: whitesmoke !important;
         }
         
-        label {
-            display: none !important;
-        }
-        
         #personNumber,
         #range {
             color: whitesmoke !important;
@@ -35,6 +31,14 @@
             border-radius: 5px;
             color: whitesmoke !important;
             width: 30vw;
+        }
+        
+        .submitDate {
+            background-color: goldenrod;
+            padding: 10px;
+            color: whitesmoke !important;
+            border: none;
+            width: 60%;
         }
         
         .modal-dark .modal-content {
@@ -58,6 +62,10 @@
         
         .modal-dark .close:hover {
             color: #ccc;
+        }
+        
+        .roomDiv:last-child {
+            margin-bottom: 20px;
         }
     </style>
 </head>
@@ -89,12 +97,23 @@
 
     </div>
 
-    <div class="reservationDiv mt-5">
-        <form>
-            <label>Data przyjazdu:</label><input type="text" name="start-date" id="start-date" class="dateSelect">
-            <label>Data odjazdu:</label><input type="text" name="end-date" id="end-date" class="dateSelect">
-            <label>Ilość osób:</label><input type="number" name="persons" min="1" max="4">
-            <input type="submit" style="background-color: goldenrod;padding-left: 15px; padding-right: 15px;" class="submitDate" value="Pokaż dostępne">
+    <div class="reservationDiv d-flex flex-lg-row flex-column flex-lg-fill mt-5 pb-3 pt-3">
+        <form class="d-flex flex-lg-row flex-column flex-lg-fill">
+            <div class="m-3">
+                <label for="start-date" class="form-label">Data przyjazdu:</label>
+                <input type="text" name="start-date" id="start-date" class="dateSelect form-control">
+            </div>
+            <div class="m-3">
+                <label for="end-date" class="form-label">Data odjazdu:</label>
+                <input type="text" name="end-date" id="end-date" class="dateSelect form-control">
+            </div>
+            <div class="m-3">
+                <label for="persons" class="form-label">Ilość osób:</label>
+                <input type="number" name="persons" min="1" max="4" id="persons" class="form-control">
+            </div>
+            <div class="m-3 d-flex justify-content-center">
+                <input type="submit" class="submitDate" value="Pokaż dostępne">
+            </div>
         </form>
     </div>
 
