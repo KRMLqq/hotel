@@ -336,8 +336,8 @@
                     var button = $(event.relatedTarget)
                     var apartment = button.data('apartment')
                     var price = button.data('price');
-                    //roomID = button.data('id');
-                    console.log(price);
+                    roomID = button.data('id');
+                    console.log(roomID);
                     for (let i = 0; i < services.length; i++) {
                         serviceSelect.innerHTML += `<option value=${services[i].service_id}>${services[i].service_name}</option>`;
                     }
@@ -376,12 +376,12 @@
                             console.log(data);
                             const data2 = {
                                 User_id: data["User_id"],
-                                Room_id: 2,
+                                Room_id: roomID,
                                 Service_id: selectedService,
                                 Start: start,
                                 End: end
                             }
-                            console.log(data2.User_id);
+                            console.log(data2);
                             const dataToSend2 = prepareData(data2);
                             console.log(dataToSend2);
                             fetch("http://localhost:8000/addReservation", {
